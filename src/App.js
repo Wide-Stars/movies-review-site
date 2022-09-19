@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Test from "./components/Test";
+import AddMove from "./components/Movie/AddMove";
 import Admin from "./pages/Admin";
 import Details from "./pages/Details";
 import Home from "./pages/Home";
@@ -10,9 +10,9 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="" element={<Home />} />
-        <Route path="/test" element={<Test />} />
         <Route path="/movieDetails" element={<Details />} />
         <Route path="/dashboard" element={<Admin />} />
+        <Route path="/dashboard/add_movie" element={<AddMove />} />
       </Routes>
     </Router>
   );

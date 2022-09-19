@@ -33,6 +33,10 @@ body {
 .sidebar .left-sidebar li:hover{
   background-color: rgba(56, 54, 54, 0.769);
 }
+.sidebar .left-sidebar  a {
+  text-decoration: none;
+  color: white;
+}
 
 
 
