@@ -49,7 +49,12 @@ const MovieDetails = () => {
 
   return (
     <div>
-      <DetailsBanner />
+      <DetailsBanner 
+        src="https://www.youtube.com/embed/NTfBFpDrBT4?controls=0"
+        director="test"
+        writers="tgsegreg, sdgsdg, sdgsdfg"
+        stars="sgdsg, dsfgfsdg, gsdgsd"
+      /> 
       <Title>Reviews</Title>
       <div className="row">
         <div className="col-md-7">

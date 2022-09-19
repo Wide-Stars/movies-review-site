@@ -14,3 +14,25 @@ body {
   color: rgb(255, 255, 255);
 }
 
+.sidebar .left-sidebar{
+  height: 100vh;
+  border-right: 1px solid #fff;
+}
+
+.sidebar .left-sidebar li{
+  list-style-type: none;
+  background-color: rgba(26, 25, 25, 0.769);
+  margin: 1rem .5rem;
+  padding: 1rem 1rem;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+
+}
+.sidebar .left-sidebar li:hover{
+  background-color: rgba(56, 54, 54, 0.769);
+}
+
+
+
