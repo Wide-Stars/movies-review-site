@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import AddReview from "../Review/AddReview";
+import AddMoiveDetails from "./AddMoiveDetails";
 import TopHeader from "../TopHeader/TopHeader";
 
 const AddMove = () => {
@@ -15,7 +15,7 @@ const AddMove = () => {
             </Link>
           </div>
           <div className="col-md-8 container">
-            <AddReview />
+            <AddMoiveDetails />
           </div>
         </div>
       </div>
