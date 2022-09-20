@@ -9,7 +9,7 @@ import { db } from "../../firebase"
 import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
-const reviews = [
+const reviewsw = [
   {
     id: 32,
     rating: 5,
@@ -44,12 +44,16 @@ const reviews = [
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState({})
+  const [reviews, setReviews] = useState('')
 
   const getMovieData = async () => {
     const snap = await getDoc(doc(db, 'movies', 'VCAiXRYDrLk0ih4SG4gh'))
     if (snap.exists()) {
-      console.log(snap.data())
+
       setMovie(snap.data())
+
+      setReviews(JSON.parse(snap.data().review));
+
     }
     else {
       console.log("No such document")
@@ -60,26 +64,31 @@ const MovieDetails = () => {
     getMovieData()
 
   }, [])
+  console.log(reviews);
 
   const currentId = useLocation().pathname.split("/")[2];
-  console.log(currentId);
+  // console.log(currentId);
+
+
+
+
+  // console.log(movie.reviews)
 
 
 
 
 
+  const userReviews = reviews.length > 0 ? reviews.map((review) => {
 
-
-  const userReviews = reviews.map((review) => {
     return (
       <Review
-        rating={review.rating}
-        name={review.name}
-        date={review.date}
-        description={review.description}
+        rating={review.rating || "N/A"}
+        name={review.name || "N/A"}
+        date={review.date || "N/A"}
+        description={review.comment || "N/A"}
       />
     );
-  });
+  }) : null;
 
   return (
     <div>
