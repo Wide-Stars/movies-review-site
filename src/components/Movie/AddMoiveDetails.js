@@ -3,15 +3,16 @@ import classes from "../Review/addRevie.module.css";
 
 import { db } from '../../firebase'
 import { collection, addDoc, Timestamp } from 'firebase/firestore'
+import { useNavigate } from "react-router-dom";
 
 const AddMoiveDetails = (props) => {
+  const navigate = useNavigate();
   const nameRef = useRef("");
   const descriptionRef = useRef("");
   const bannerImgUrlRef = useRef("");
   const coverImgUrlRef = useRef("");
 
   const tailerUrlRef = useRef("");
-  const staffListRef = useRef("");
   const directorRef = useRef("");
   const writersRef = useRef("");
   const starsRef = useRef("");
@@ -39,7 +40,7 @@ const AddMoiveDetails = (props) => {
         reviews: [],
       });
 
-
+      navigate("/");
 
     } catch (error) {
       console.log('error from add movie details submit handler /n', error)

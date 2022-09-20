@@ -63,7 +63,7 @@ const MovieDetails = () => {
         src={movie.tailerUrl}
         movieName={movie.name || "N/A"}
         director={movie.director || "N/A"}
-        writers={movie.writers || "N/A"}
+        writers={movie.writer || "N/A"}
         stars={movie.stars || "N/A"}
       />
       <Title>Reviews</Title>
