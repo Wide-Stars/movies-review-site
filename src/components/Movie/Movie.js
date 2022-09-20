@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Movie = (props) => {
   return (
-    <Link to="/movieDetails">
+    <Link to={props.url}>
       <img src={props.src} alt="fh" width={props.width} />
     </Link>
   );

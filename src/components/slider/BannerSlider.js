@@ -4,76 +4,28 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Movie from "../Movie/Movie";
 
-const movieData = [
-  {
-    id: 1,
-    title: "The Shawshank Redemption",
-    year: "1994",
-    runtime: "142",
-    genres: ["Crime", "Drama"],
-    director: "Frank Darabont",
-    actors: "Tim Robbins, Morgan Freeman, Bob Gunton, William Sadler",
-    thumbnail:
-      "https://i.ytimg.com/vi/s_uKTQmGjFs/maxresdefault.jpg",
-  },
-  {
-    id: 3,
-    title: "The Shawshank Redemption",
-    year: "1994",
-    runtime: "142",
-    genres: ["Crime", "Drama"],
-    director: "Frank Darabont",
-    actors: "Tim Robbins, Morgan Freeman, Bob Gunton, William Sadler",
-    thumbnail: "https://i.ytimg.com/vi/s_uKTQmGjFs/maxresdefault.jpg",
-  },
-  {
-    id: 15,
-    title: "The Shawshank Redemption",
-    year: "1994",
-    runtime: "142",
-    genres: ["Crime", "Drama"],
-    director: "Frank Darabont",
-    actors: "Tim Robbins, Morgan Freeman, Bob Gunton, William Sadler",
-    thumbnail:
-      "https://i.ytimg.com/vi/s_uKTQmGjFs/maxresdefault.jpg",
-  },
-  {
-    id: 571,
-    title: "The Shawshank Redemption",
-    year: "1994",
-    runtime: "142",
-    genres: ["Crime", "Drama"],
-    director: "Frank Darabont",
-    actors: "Tim Robbins, Morgan Freeman, Bob Gunton, William Sadler",
-    thumbnail:
-      "https://i.ytimg.com/vi/s_uKTQmGjFs/maxresdefault.jpg",
-  },
+import { useState, useEffect } from 'react'
+import { collection, query, orderBy, onSnapshot } from "firebase/firestore"
+import { db } from '../../firebase'
+import { Link } from "react-router-dom";
 
-  {
-    id: 33,
-    title: "The Shawshank Redemption",
-    year: "1994",
-    runtime: "142",
-    genres: ["Crime", "Drama"],
-    director: "Frank Darabont",
-    actors: "Tim Robbins, Morgan Freeman, Bob Gunton, William Sadler",
-    thumbnail: "https://i.ytimg.com/vi/s_uKTQmGjFs/maxresdefault.jpg",
-  },
-  {
-    id: 13,
-    title: "The Shawshank Redemption",
-    year: "1994",
-    runtime: "142",
-    genres: ["Crime", "Drama"],
-    director: "Frank Darabont",
-    actors: "Tim Robbins, Morgan Freeman, Bob Gunton, William Sadler",
-    thumbnail:
-      "https://i.ytimg.com/vi/s_uKTQmGjFs/maxresdefault.jpg",
-  },
-];
+
+
 
 
 const BannerSlider = () => {
+  const [moviesList, setMoviesList] = useState([])
+
+
+  useEffect(() => {
+    const q = query(collection(db, "movies"));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      setMoviesList(querySnapshot.docs.map((doc) => { return { id: doc.id, ...doc.data() } }));
+    });
+  }, [])
+
+
+
   const settings = {
     dots: true,
     centerMode: true,
@@ -117,8 +69,9 @@ const BannerSlider = () => {
   return (
     <>
       <Slider {...settings}>
-        {movieData.map((movie) => (
-          <Movie src={movie.thumbnail} width="560px" />
+        {moviesList.map((movie,) => (
+          <Movie url={`/movie/${movie.id}`} key={movie.id} src={movie.coverImgUrl} width="560px" />
+
         ))}
       </Slider>
     </>

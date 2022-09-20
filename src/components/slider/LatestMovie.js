@@ -5,71 +5,29 @@ import "slick-carousel/slick/slick-theme.css";
 import Title from "../UI/Title";
 import Movie from "../Movie/Movie";
 
-const movieData = [
-  {
-    id: 1,
-    title: "The Shawshank Redemption",
-    year: "1994",
-    runtime: "142",
-    genres: ["Crime", "Drama"],
-    director: "Frank Darabont",
-    actors: "Tim Robbins, Morgan Freeman, Bob Gunton, William Sadler",
-    thumbnail: "https://cdn.bollywoodmdb.com/fit-in/movies/largethumb/2015/talwar/poster.jpg",
-  },
-  {
-    id: 3,
-    title: "The Shawshank Redemption",
-    year: "1994",
-    runtime: "142",
-    genres: ["Crime", "Drama"],
-    director: "Frank Darabont",
-    actors: "Tim Robbins, Morgan Freeman, Bob Gunton, William Sadler",
-    thumbnail: "https://cdn.bollywoodmdb.com/fit-in/movies/largethumb/2015/talwar/poster.jpg",
-  },
-  {
-    id: 15,
-    title: "The Shawshank Redemption",
-    year: "1994",
-    runtime: "142",
-    genres: ["Crime", "Drama"],
-    director: "Frank Darabont",
-    actors: "Tim Robbins, Morgan Freeman, Bob Gunton, William Sadler",
-    thumbnail: "https://cdn.bollywoodmdb.com/fit-in/movies/largethumb/2015/talwar/poster.jpg",
-  },
-  {
-    id: 571,
-    title: "The Shawshank Redemption",
-    year: "1994",
-    runtime: "142",
-    genres: ["Crime", "Drama"],
-    director: "Frank Darabont",
-    actors: "Tim Robbins, Morgan Freeman, Bob Gunton, William Sadler",
-    thumbnail: "https://cdn.bollywoodmdb.com/fit-in/movies/largethumb/2015/talwar/poster.jpg",
-  },
+import { useState, useEffect } from 'react'
+import { collection, query, orderBy, onSnapshot } from "firebase/firestore"
+import { db } from '../../firebase'
 
-  {
-    id: 33,
-    title: "The Shawshank Redemption",
-    year: "1994",
-    runtime: "142",
-    genres: ["Crime", "Drama"],
-    director: "Frank Darabont",
-    actors: "Tim Robbins, Morgan Freeman, Bob Gunton, William Sadler",
-    thumbnail: "https://cdn.bollywoodmdb.com/fit-in/movies/largethumb/2015/talwar/poster.jpg",
-  },
-  {
-    id: 13,
-    title: "The Shawshank Redemption",
-    year: "1994",
-    runtime: "142",
-    genres: ["Crime", "Drama"],
-    director: "Frank Darabont",
-    actors: "Tim Robbins, Morgan Freeman, Bob Gunton, William Sadler",
-    thumbnail: "https://cdn.bollywoodmdb.com/fit-in/movies/largethumb/2015/talwar/poster.jpg",
-  },
-];
+
+
+
 
 const LatestMovie = () => {
+
+  const [moviesList, setMoviesList] = useState([])
+
+
+  useEffect(() => {
+    const q = query(collection(db, "movies"));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      setMoviesList(querySnapshot.docs.map((doc) => { return { id: doc.id, ...doc.data() } }));
+
+    });
+  }, [])
+
+  // console.log(moviesList)
+
   const settings = {
     centerMode: true,
     infinite: true,
@@ -113,8 +71,8 @@ const LatestMovie = () => {
     <div>
       <Title>Latest Movies</Title>
       <Slider {...settings}>
-        {movieData.map((movie) => (
-          <Movie src={movie.thumbnail} width="220px" />
+        {moviesList.map((movie) => (
+          <Movie key={movie.id} src={movie.coverImgUrl} width="220px" />
         ))}
       </Slider>
     </div>

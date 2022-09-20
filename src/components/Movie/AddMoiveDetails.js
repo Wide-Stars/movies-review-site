@@ -3,15 +3,19 @@ import classes from "../Review/addRevie.module.css";
 
 import { db } from '../../firebase'
 import { collection, addDoc, Timestamp } from 'firebase/firestore'
+import { useNavigate } from "react-router-dom";
 
 const AddMoiveDetails = (props) => {
+  const navigate = useNavigate();
   const nameRef = useRef("");
   const descriptionRef = useRef("");
   const bannerImgUrlRef = useRef("");
   const coverImgUrlRef = useRef("");
 
   const tailerUrlRef = useRef("");
-  const staffListRef = useRef("");
+  const directorRef = useRef("");
+  const writersRef = useRef("");
+  const starsRef = useRef("");
 
   async function submitHandler(event) {
     event.preventDefault();
@@ -29,12 +33,14 @@ const AddMoiveDetails = (props) => {
         coverImgUrl: coverImgUrlRef.current.value,
         bannerImgUrl: bannerImgUrlRef.current.value,
         tailerUrl: tailerUrlRef.current.value,
-        staffList: staffListRef.current.value,
         description: descriptionRef.current.value,
+        director: directorRef.current.value,
+        writer: writersRef.current.value,
+        stars: starsRef.current.value,
         reviews: [],
       });
 
-
+      navigate("/");
 
     } catch (error) {
       console.log('error from add movie details submit handler /n', error)
@@ -62,8 +68,16 @@ const AddMoiveDetails = (props) => {
         <input type="text" id="tailer-url" ref={tailerUrlRef} />
       </div>
       <div className={classes.control}>
-        <label htmlFor="staff-list">staff-list</label>
-        <input type="text" id="staff-list" ref={staffListRef} />
+        <label htmlFor="director">director</label>
+        <input type="text" id="director" ref={directorRef} />
+      </div>
+      <div className={classes.control}>
+        <label htmlFor="writers">writers</label>
+        <input type="text" id="writers" ref={writersRef} />
+      </div>
+      <div className={classes.control}>
+        <label htmlFor="stars">stars</label>
+        <input type="text" id="stars" ref={starsRef} />
       </div>
       <div className={classes.control}>
         <label htmlFor="description">description</label>
