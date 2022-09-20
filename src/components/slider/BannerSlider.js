@@ -7,6 +7,7 @@ import Movie from "../Movie/Movie";
 import { useState, useEffect } from 'react'
 import { collection, query, orderBy, onSnapshot } from "firebase/firestore"
 import { db } from '../../firebase'
+import { Link } from "react-router-dom";
 
 
 
@@ -69,7 +70,8 @@ const BannerSlider = () => {
     <>
       <Slider {...settings}>
         {moviesList.map((movie,) => (
-          <Movie key={movie.id} src={movie.coverImgUrl} width="560px" />
+          <Movie url={`/movie/${movie.id}`} key={movie.id} src={movie.coverImgUrl} width="560px" />
+
         ))}
       </Slider>
     </>

@@ -9,36 +9,6 @@ import { db } from "../../firebase"
 import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
-const reviewsw = [
-  {
-    id: 32,
-    rating: 5,
-    name: "Hablu khan",
-    date: "18 Sep 2022",
-    description: "lorem dgdos agdag ajgodfg ikajgifdjgpagjsdg ",
-  },
-  {
-    id: 82,
-    rating: 5,
-    name: "Hablu khan",
-    date: "18 Sep 2022",
-    description: "lorem dgdos agdag ajgodfg ikajgifdjgpagjsdg ",
-  },
-  {
-    id: 824,
-    rating: 5,
-    name: "Hablu khan",
-    date: "18 Sep 2022",
-    description: "lorem dgdos agdag ajgodfg ikajgifdjgpagjsdg ",
-  },
-  {
-    id: 823,
-    rating: 5,
-    name: "Hablu khan",
-    date: "18 Sep 2022",
-    description: "lorem dgdos agdag ajgodfg ikajgifdjgpagjsdg ",
-  },
-];
 
 
 
@@ -46,8 +16,9 @@ const MovieDetails = () => {
   const [movie, setMovie] = useState({})
   const [reviews, setReviews] = useState('')
 
-  const getMovieData = async () => {
-    const snap = await getDoc(doc(db, 'movies', 'VCAiXRYDrLk0ih4SG4gh'))
+  const getMovieData = async (id) => {
+
+    const snap = await getDoc(doc(db, 'movies', id))
     if (snap.exists()) {
 
       setMovie(snap.data())
@@ -60,19 +31,15 @@ const MovieDetails = () => {
     }
   }
 
+  const currentId = useLocation().pathname.split("/")[2];
   useEffect(() => {
-    getMovieData()
+
+    getMovieData(currentId)
 
   }, [])
   console.log(reviews);
 
-  const currentId = useLocation().pathname.split("/")[2];
-  // console.log(currentId);
 
-
-
-
-  // console.log(movie.reviews)
 
 
 
@@ -84,7 +51,7 @@ const MovieDetails = () => {
       <Review
         rating={review.rating || "N/A"}
         name={review.name || "N/A"}
-        date={review.date || "N/A"}
+        date={review.date || "00/00/0000"}
         description={review.comment || "N/A"}
       />
     );
@@ -106,7 +73,7 @@ const MovieDetails = () => {
         </div>
         <div className="col-md-5">
           <h2>Sumbit Your Review</h2>
-          <AddReview />
+          <AddReview id={currentId} reviews={reviews} />
         </div>
       </div>
     </div>
