@@ -19,11 +19,10 @@ const BannerSlider = () => {
   useEffect(() => {
     const q = query(collection(db, "movies"));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      setMoviesList(querySnapshot.docs.map((doc) => doc.data()));
+      setMoviesList(querySnapshot.docs.map((doc) => { return { id: doc.id, ...doc.data() } }));
     });
   }, [])
 
-  console.log(moviesList)
 
 
   const settings = {
@@ -69,8 +68,8 @@ const BannerSlider = () => {
   return (
     <>
       <Slider {...settings}>
-        {moviesList.map((movie, i) => (
-          <Movie key={i} src={movie.coverImgUrl} width="560px" />
+        {moviesList.map((movie,) => (
+          <Movie key={movie.id} src={movie.coverImgUrl} width="560px" />
         ))}
       </Slider>
     </>
