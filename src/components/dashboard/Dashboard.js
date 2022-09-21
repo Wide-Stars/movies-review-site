@@ -12,6 +12,7 @@ const Dashboard = () => {
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             setMoviesList(querySnapshot.docs.map((doc) => { return { id: doc.id, ...doc.data() } }));
         });
+
     }, [])
     console.log(moviesList)
     return (
