@@ -21,12 +21,6 @@ const AddMoiveDetails = (props) => {
     event.preventDefault();
     try {
 
-      // name: nameRef.current.value;
-      // coverImgUrl: coverImgUrlRef.current.value;
-      // bannerImgUrl: bannerImgUrlRef.current.value;
-      // tailerUrl: tailerUrlRef.current.value;
-      // staffList: staffListRef.current.value;
-      // description: descriptionRef.current.value;
 
       await addDoc(collection(db, "movies"), {
         name: nameRef.current.value,
