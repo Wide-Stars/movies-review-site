@@ -72,7 +72,7 @@ const LatestMovie = () => {
       <Title>Latest Movies</Title>
       <Slider {...settings}>
         {moviesList.map((movie) => (
-          <Movie key={movie.id} src={movie.coverImgUrl} width="220px" />
+          <Movie key={movie.id} src={movie.coverImgUrl} width="220px" url={`/movie/${movie.id}`} />
         ))}
       </Slider>
     </div>
