@@ -6,12 +6,13 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-	apiKey: "AIzaSyButxnusMw-jbLTMbjrWkcd1N_b7ZqyM0M",
-	authDomain: "movies-review-52201.firebaseapp.com",
-	projectId: "movies-review-52201",
-	storageBucket: "movies-review-52201.appspot.com",
-	messagingSenderId: "141721438528",
-	appId: "1:141721438528:web:084a2128aeea00a11592a5"
+	apiKey: "AIzaSyBcMPLaamzSVZVcubmuHDT7kklb2pWN930",
+	authDomain: "movie-review-pro.firebaseapp.com",
+	projectId: "movie-review-pro",
+	storageBucket: "movie-review-pro.appspot.com",
+	messagingSenderId: "976969512214",
+	appId: "1:976969512214:web:a831c55e5f59fad608cc37",
+	measurementId: "G-8BTLS5DH3L"
 };
 
 // Initialize Firebase
