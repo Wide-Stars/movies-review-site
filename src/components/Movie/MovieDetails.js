@@ -32,9 +32,15 @@ const MovieDetails = () => {
   }
 
   const currentId = useLocation().pathname.split("/")[2];
+
+  const reRenderHandler = () => {
+    getMovieData(currentId)
+
+  }
   useEffect(() => {
 
-    getMovieData(currentId)
+    getMovieData(currentId);
+
 
   }, [])
   console.log(reviews);
@@ -73,7 +79,7 @@ const MovieDetails = () => {
         </div>
         <div className="col-md-5">
           <h2>Sumbit Your Review</h2>
-          <AddReview id={currentId} reviews={reviews} />
+          <AddReview id={currentId} reviews={reviews} reRenderHandler={reRenderHandler} />
         </div>
       </div>
     </div>

@@ -27,8 +27,11 @@ const AddReview = (props) => {
     event.preventDefault();
 
     addReview(docRef)
-    navigate("/");
-
+    // navigate("/movie/" + props.id);
+    props.reRenderHandler()
+    ratingRef.current.value = 1;
+    nameRef.current.value = "";
+    descriptionRef.current.value = "";
 
 
 

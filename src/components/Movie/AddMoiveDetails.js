@@ -16,17 +16,14 @@ const AddMoiveDetails = (props) => {
   const directorRef = useRef("");
   const writersRef = useRef("");
   const starsRef = useRef("");
+  const [banner, setBanner] = React.useState(false);
+
 
   async function submitHandler(event) {
     event.preventDefault();
+    setBanner(true)
     try {
 
-      // name: nameRef.current.value;
-      // coverImgUrl: coverImgUrlRef.current.value;
-      // bannerImgUrl: bannerImgUrlRef.current.value;
-      // tailerUrl: tailerUrlRef.current.value;
-      // staffList: staffListRef.current.value;
-      // description: descriptionRef.current.value;
 
       await addDoc(collection(db, "movies"), {
         name: nameRef.current.value,
@@ -40,7 +37,16 @@ const AddMoiveDetails = (props) => {
         reviews: [],
       });
 
-      navigate("/");
+      nameRef.current.value = "";
+      descriptionRef.current.value = "";
+      bannerImgUrlRef.current.value = "";
+      coverImgUrlRef.current.value = "";
+      tailerUrlRef.current.value = "";
+      directorRef.current.value = "";
+      writersRef.current.value = "";
+      starsRef.current.value = "";
+
+
 
     } catch (error) {
       console.log('error from add movie details submit handler /n', error)
@@ -83,7 +89,9 @@ const AddMoiveDetails = (props) => {
         <label htmlFor="description">description</label>
         <textarea rows="5" id="description" ref={descriptionRef}></textarea>
       </div>
+      {banner && <p>movie added successfully</p>}
       <button>Add movie</button>
+
     </form>
   );
 };
