@@ -1,28 +1,14 @@
-/* eslint-disable */ import React from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import AddMoiveDetails from "./AddMoiveDetails";
-import TopHeader from "../TopHeader/TopHeader";
+import AdminLayout from "../layouts/AdminLayout";
 
 const AddMove = () => {
   return (
-    <div className="container-fluid">
-      <TopHeader />
-      <div className="sidebar ">
-        <div className="row">
-          <div className="col-md-3 left-sidebar">
-            <Link to="/dashboard/add_movie">
-              <li>Post Movie</li>
-            </Link>
-            <Link to="/dashboard/movie_lists">
-              <li>Movie List</li>
-            </Link>
-          </div>
-          <div className="col-md-8 container">
-            <AddMoiveDetails />
-          </div>
-        </div>
-      </div>
-    </div>
+    <>
+      <AdminLayout>
+        <AddMoiveDetails />
+      </AdminLayout>
+    </>
   );
 };
 
