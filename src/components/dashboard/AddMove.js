@@ -4,11 +4,9 @@ import AdminLayout from "../layouts/AdminLayout";
 
 const AddMove = () => {
   return (
-    <>
-      <AdminLayout>
-        <AddMoiveDetails />
-      </AdminLayout>
-    </>
+    <AdminLayout>
+      <AddMoiveDetails />
+    </AdminLayout>
   );
 };
 

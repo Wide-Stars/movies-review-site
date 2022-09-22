@@ -1,14 +1,12 @@
-/* eslint-disable */ import React from 'react';
-import Dashboard from '../components/dashboard/Dashboard.js'
-import TopHeader from '../components/TopHeader/TopHeader.js';
+import React from "react";
+import Dashboard from "../components/dashboard/Dashboard.js";
 
 const Admin = () => {
-    return (
-        <div className='container-fluid'>
-            <TopHeader />
-            <Dashboard />
-        </div>
-    );
-}
+  return (
+    <>
+      <Dashboard />
+    </>
+  );
+};
 
 export default Admin;
