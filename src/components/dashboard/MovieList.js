@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
+import { collection, query, orderBy, onSnapshot, doc, updateDoc, deleteDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import TopHeader from "../TopHeader/TopHeader";
+import deleteImg from "../../images/icons8-remove-48.png";
+import { async } from "@firebase/util";
 
 const Dashboard = () => {
   const [moviesList, setMoviesList] = useState([]);
@@ -18,7 +20,16 @@ const Dashboard = () => {
       );
     });
   }, []);
-  console.log(moviesList);
+
+  const handleDelete = async (id) => {
+    const docRef = doc(db, 'movies', id)
+    try {
+      await deleteDoc(docRef)
+      moviesList.splice(moviesList.findIndex((movie) => movie.id === id), 1)
+    } catch (err) {
+      console.log(err)
+    }
+  }
   return (
     <div className="container-fluid">
       <TopHeader />
@@ -34,9 +45,17 @@ const Dashboard = () => {
           </div>
           <div className="col-md-9 left-sidebar">
             {moviesList.map((movie) => (
-              <Link to={`/movie/${movie.id}`}>
-                <li>{movie.name}</li>
-              </Link>
+              <>
+
+                <div style={{ display: "flex" }}>
+                  <Link to={`/movie/${movie.id}`} key={movie.id} style={{ flex: 10 }}>
+                    <li >{movie.name}
+                    </li>
+                  </Link>
+                  <img style={{ flex: 1, paddingTop: "10px" }} src={deleteImg} onClick={() => { handleDelete(movie.id) }} />
+                </div>
+
+              </>
             ))}
           </div>
         </div>
