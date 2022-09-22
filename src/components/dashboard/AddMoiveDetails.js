@@ -21,7 +21,6 @@ const AddMoiveDetails = (props) => {
 
   async function submitHandler(event) {
     event.preventDefault();
-    setBanner(true)
     try {
 
 
@@ -45,6 +44,7 @@ const AddMoiveDetails = (props) => {
       directorRef.current.value = "";
       writersRef.current.value = "";
       starsRef.current.value = "";
+      setBanner(true)
 
 
 
@@ -62,34 +62,34 @@ const AddMoiveDetails = (props) => {
       </div>
 
       <div className={classes.control}>
-        <label htmlFor="cover-url">cover-url</label>
-        <input type="text" id="cover-url" ref={coverImgUrlRef} />
+        <label htmlFor="mainImageUrl">Main Image Url</label>
+        <input type="text" id="mainImageUrl" ref={coverImgUrlRef} />
       </div>
       <div className={classes.control}>
-        <label htmlFor="banner_url">banner_url</label>
-        <input type="text" id="banner_url" ref={bannerImgUrlRef} />
+        <label htmlFor="coverImageUrl">Cover Image Url</label>
+        <input type="text" id="coverImageUrl" ref={bannerImgUrlRef} />
       </div>
       <div className={classes.control}>
-        <label htmlFor="tailer-url">tailer-url</label>
+        <label htmlFor="tailer-url">Tailer url</label>
         <input type="text" id="tailer-url" ref={tailerUrlRef} />
       </div>
       <div className={classes.control}>
-        <label htmlFor="director">director</label>
+        <label htmlFor="director">Director</label>
         <input type="text" id="director" ref={directorRef} />
       </div>
       <div className={classes.control}>
-        <label htmlFor="writers">writers</label>
+        <label htmlFor="writers">Writers</label>
         <input type="text" id="writers" ref={writersRef} />
       </div>
       <div className={classes.control}>
-        <label htmlFor="stars">stars</label>
+        <label htmlFor="stars">Stars</label>
         <input type="text" id="stars" ref={starsRef} />
       </div>
       <div className={classes.control}>
-        <label htmlFor="description">description</label>
+        <label htmlFor="description">Description</label>
         <textarea rows="5" id="description" ref={descriptionRef}></textarea>
       </div>
-      {banner && <p>movie added successfully</p>}
+      {banner && <p>Movie added successfully</p>}
       <button className="btn btn-primary">Add movie</button>
 
     </form>
