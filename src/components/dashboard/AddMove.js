@@ -13,6 +13,9 @@ const AddMove = () => {
             <Link to="/dashboard/add_movie">
               <li>Post Movie</li>
             </Link>
+            <Link to="/dashboard/movie_lists">
+              <li>Movie List</li>
+            </Link>
           </div>
           <div className="col-md-8 container">
             <AddMoiveDetails />
