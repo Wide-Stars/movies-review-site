@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable */ import React from "react";
 import Card from "../UI/Card";
 
 const DetailsBanner = (props) => {

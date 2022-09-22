@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable */ import React from "react";
 import classes from "./review.module.css";
 import { BsFillStarFill } from "react-icons/bs";
 

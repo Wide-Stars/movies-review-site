@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable */ import React from "react";
 import AddReview from "../Review/AddReview";
 import Review from "../Review/Review";
 import Title from "../UI/Title";
@@ -39,10 +39,10 @@ const MovieDetails = () => {
   }
   useEffect(() => {
 
-    getMovieData(currentId);
+    reRenderHandler()
 
 
-  }, [])
+  }, [reRenderHandler])
 
 
 

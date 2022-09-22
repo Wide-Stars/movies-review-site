@@ -1,12 +1,10 @@
-import React, { useRef } from "react";
+/* eslint-disable */ import React, { useRef } from "react";
 import { db } from "../../firebase"
 import classes from "./addRevie.module.css";
 import { doc, updateDoc } from "firebase/firestore";
-import { useNavigate } from "react-router-dom";
 
 
 const AddReview = (props) => {
-  const navigate = useNavigate();
 
   const nameRef = useRef("");
   const descriptionRef = useRef("");

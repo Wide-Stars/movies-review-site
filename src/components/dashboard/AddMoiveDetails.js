@@ -1,12 +1,10 @@
-import React, { useRef } from "react";
+/* eslint-disable */ import React, { useRef } from "react";
 import classes from "../Review/addRevie.module.css";
 
 import { db } from '../../firebase'
-import { collection, addDoc, Timestamp } from 'firebase/firestore'
-import { useNavigate } from "react-router-dom";
+import { collection, addDoc, } from 'firebase/firestore'
 
-const AddMoiveDetails = (props) => {
-  const navigate = useNavigate();
+const AddMoiveDetails = () => {
   const nameRef = useRef("");
   const descriptionRef = useRef("");
   const bannerImgUrlRef = useRef("");

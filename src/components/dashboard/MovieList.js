@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable */ import React from "react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import {
@@ -35,7 +35,7 @@ const Dashboard = () => {
   });
 
 
-  
+
   const handleDelete = async (id) => {
     const docRef = doc(db, "movies", id);
     try {
