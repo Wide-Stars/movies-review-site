@@ -90,7 +90,7 @@ const AddMoiveDetails = (props) => {
         <textarea rows="5" id="description" ref={descriptionRef}></textarea>
       </div>
       {banner && <p>movie added successfully</p>}
-      <button>Add movie</button>
+      <button className="btn btn-primary">Add movie</button>
 
     </form>
   );

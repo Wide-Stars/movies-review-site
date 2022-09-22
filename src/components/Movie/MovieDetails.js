@@ -43,7 +43,6 @@ const MovieDetails = () => {
 
 
   }, [])
-  console.log(reviews);
 
 
 

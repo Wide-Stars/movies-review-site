@@ -16,7 +16,7 @@ const DetailsBanner = (props) => {
             allowfullscreen
           ></iframe> */}
           <iframe width="100%"
-            height="420" src={props.src} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            height="420" src={`https://www.youtube.com/embed${props.src}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <Card className="col-md-4">
           <h4>Movie Name: {props.movieName}</h4>

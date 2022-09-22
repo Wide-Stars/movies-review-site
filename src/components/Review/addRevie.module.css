@@ -14,9 +14,11 @@
     display: block;
     width: 100%;
     font: inherit;
-    padding: 0.2rem;
+    padding: 0.3rem;
     border-radius: 12px;
-    border: 1px solid #ccc;
+    border: none;
+    background-color: rgb(59, 59, 59);
+    color: #fff;
   }
   
   .control input:focus,
