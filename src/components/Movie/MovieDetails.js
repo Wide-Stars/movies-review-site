@@ -70,6 +70,7 @@ const MovieDetails = () => {
         director={movie.director || "N/A"}
         writers={movie.writer || "N/A"}
         stars={movie.stars || "N/A"}
+        description={movie.description || "...."}
       />
       <Title>Reviews</Title>
       <div className="row">

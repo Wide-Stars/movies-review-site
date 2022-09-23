@@ -4,7 +4,7 @@ import TopHeader from "../components/TopHeader/TopHeader";
 
 const Home = () => {
   return (
-    <div className="container pb-5">
+    <div className="container-home pb-5 ">
       <TopHeader />
       <BannerSlider />
       <LatestMovie />

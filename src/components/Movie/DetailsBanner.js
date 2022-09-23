@@ -1,28 +1,28 @@
-/* eslint-disable */ import React from "react";
+import React from "react";
 import Card from "../UI/Card";
+import ReactPlayer from "react-player";
 
 const DetailsBanner = (props) => {
   return (
     <div>
       <div className="row">
         <div className="col-md-8">
-          {/* <iframe
-            width="100%"
-            height="420"
-            src={props.src}
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe> */}
-          <iframe width="100%"
-            height="420" src={`https://www.youtube.com/embed${props.src}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <ReactPlayer height="420px" width="100%" url={props.src} />
+          <p className="mt-4 movie_desc">{props.description}</p>
         </div>
         <Card className="col-md-4">
-          <h4>Movie Name: {props.movieName}</h4>
-          <h5>Director: {props.director}</h5>
-          <h5>Writers: {props.writers}</h5>
-          <h5>Stars: {props.stars}</h5>
+          <h5>
+            Movie Name: <span className="dtls_name">{props.movieName}</span>
+          </h5>
+          <h5>
+            Director: <span className="dtls_name">{props.director}</span>
+          </h5>
+          <h5>
+            Writers: <span className="dtls_name">{props.writers}</span>
+          </h5>
+          <h5>
+            Stars: <span className="dtls_name">{props.stars}</span>
+          </h5>
         </Card>
       </div>
     </div>

@@ -4,7 +4,7 @@ import TopHeader from '../components/TopHeader/TopHeader';
 
 const Details = () => {
     return (
-        <div className="container">
+        <div className="container-details">
             <TopHeader />
             <MovieDetails />
         </div>

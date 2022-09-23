@@ -4,34 +4,37 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Title from "../UI/Title";
 import Movie from "../Movie/Movie";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
-import { useState, useEffect } from 'react'
-import { collection, query, orderBy, onSnapshot } from "firebase/firestore"
-import { db } from '../../firebase'
-
-
-
-
+import { useState, useEffect } from "react";
+import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
+import { db } from "../../firebase";
 
 const LatestMovie = () => {
-
-  const [moviesList, setMoviesList] = useState([])
-
+  const [moviesList, setMoviesList] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const q = query(collection(db, "movies"));
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      setMoviesList(querySnapshot.docs.map((doc) => { return { id: doc.id, ...doc.data() } }));
+    setIsLoading(true);
+    unsubscribe();
+  }, []);
 
-    });
-  }, [])
-
-  // console.log(moviesList)
+  //fetching data
+  const q = query(collection(db, "movies"));
+  const unsubscribe = onSnapshot(q, (querySnapshot) => {
+    setMoviesList(
+      querySnapshot.docs.map((doc) => {
+        return { id: doc.id, ...doc.data() };
+      })
+    );
+    setIsLoading(false);
+  });
 
   const settings = {
     centerMode: true,
     infinite: true,
-    slidesToShow: 5,
+    slidesToShow: 6,
     autoplay: true,
     speed: 500,
     autoplaySpeed: 3000,
@@ -70,11 +73,26 @@ const LatestMovie = () => {
   return (
     <div>
       <Title>Latest Movies</Title>
-      <Slider {...settings}>
-        {moviesList.map((movie) => (
-          <Movie key={movie.id} src={movie.coverImgUrl} width="220px" url={`/movie/${movie.id}`} />
-        ))}
-      </Slider>
+      {!isLoading ? (
+        <Slider {...settings}>
+          {moviesList.map((movie) => (
+            <Movie
+              key={movie.id}
+              src={movie.bannerImgUrl}
+              width="220px"
+              url={`/movie/${movie.id}`}
+            />
+          ))}
+        </Slider>
+      ) : (
+        <Skeleton
+          width={240}
+          inline
+          height={475}
+          count={6}
+          baseColor="#242323"
+        />
+      )}
     </div>
   );
 };
