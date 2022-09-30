@@ -1,4 +1,4 @@
-/* eslint-disable */ import React from 'react';
+import React from 'react';
 import classes from './title.module.css'
 import { MdDoubleArrow } from "react-icons/md";
 

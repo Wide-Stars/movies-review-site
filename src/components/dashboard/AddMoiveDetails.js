@@ -1,4 +1,4 @@
-/* eslint-disable */ import React, { useRef } from "react";
+import React, { useRef } from "react";
 import classes from "../Review/addRevie.module.css";
 
 import { db } from '../../firebase'

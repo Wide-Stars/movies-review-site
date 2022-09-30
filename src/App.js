@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable */;
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AddMove from "./components/dashboard/AddMove";
 import MovieList from "./components/dashboard/MovieList";

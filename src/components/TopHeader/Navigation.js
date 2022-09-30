@@ -1,8 +1,13 @@
-/* eslint-disable */ import React from "react";
+
+/* eslint-disable */;
 import { Link } from "react-router-dom";
 import classes from "./navigation.module.css";
+import { logout, auth } from "../../auth";
+import { useAuthState } from "react-firebase-hooks/auth";
+
 
 const Navigation = () => {
+  const [user, loading, error] = useAuthState(auth);
   return (
     <nav className={classes.nav}>
       <ul>
@@ -12,6 +17,16 @@ const Navigation = () => {
         <li>
           <Link to="/dashboard">Dashboard</Link>
         </li>
+        {!user && <><li>
+          <Link to="/login">Login</Link>
+        </li>
+          <li>
+            <Link to="/register">Register</Link>
+          </li>
+        </>}
+        {user && <li >
+          <button onClick={logout}>Logout</button>
+        </li>}
       </ul>
     </nav>
   );

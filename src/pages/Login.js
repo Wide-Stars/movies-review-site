@@ -1,6 +1,8 @@
+
+/* eslint-disable */
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { auth, logInWithEmailAndPassword, signInWithGoogle } from "../auth";
+import { auth, logInWithEmailAndPassword, } from "../auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "./Login.css";
 function Login() {
@@ -8,12 +10,15 @@ function Login() {
 	const [password, setPassword] = useState("");
 	const [user, loading, error] = useAuthState(auth);
 	const navigate = useNavigate();
+	const loginHandler = async () => {
+		const res = await logInWithEmailAndPassword(email, password)
+	}
 	useEffect(() => {
 		if (loading) {
 			// maybe trigger a loading screen
 			return;
 		}
-		if (user) navigate("/dashboard");
+		if (user) navigate(-1)
 	}, [user, loading]);
 	return (
 		<div className="login">
@@ -34,13 +39,11 @@ function Login() {
 				/>
 				<button
 					className="login__btn"
-					onClick={() => logInWithEmailAndPassword(email, password)}
+					onClick={loginHandler}
 				>
 					Login
 				</button>
-				<button className="login__btn login__google" onClick={signInWithGoogle}>
-					Login with Google
-				</button>
+
 				<div>
 					<Link to="/reset">Forgot Password</Link>
 				</div>
