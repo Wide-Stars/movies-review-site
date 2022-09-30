@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable */;
 import Dashboard from "../components/dashboard/Dashboard.js";
 
 const Admin = () => {

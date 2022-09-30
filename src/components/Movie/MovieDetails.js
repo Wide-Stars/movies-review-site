@@ -1,4 +1,4 @@
-/* eslint-disable */ import React from "react";
+/* eslint-disable */;
 import AddReview from "../Review/AddReview";
 import Review from "../Review/Review";
 import Title from "../UI/Title";
@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 
 
 const MovieDetails = () => {
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
 
   const [movie, setMovie] = useState({})
   const [reviews, setReviews] = useState('')

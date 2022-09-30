@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable */;
 import AddMoiveDetails from "./AddMoiveDetails";
 import AdminLayout from "../layouts/AdminLayout";
 

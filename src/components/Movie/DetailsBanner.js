@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable */;
 import Card from "../UI/Card";
 import ReactPlayer from "react-player";
 

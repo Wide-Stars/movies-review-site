@@ -1,4 +1,5 @@
-/* eslint-disable */ import React from "react";
+
+/* eslint-disable */;
 import { Link } from "react-router-dom";
 import classes from "./navigation.module.css";
 import { logout, auth } from "../../auth";

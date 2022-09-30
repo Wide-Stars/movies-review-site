@@ -46,7 +46,7 @@ const Dashboard = () => {
           </Card>
         </div>
         <div className="col-md-6">
-        <Card>
+          <Card>
             {isLoading && (
               <h1 className="text-warning text-center">Loading.....</h1>
             )}

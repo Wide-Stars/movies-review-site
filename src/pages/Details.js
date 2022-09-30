@@ -1,4 +1,4 @@
-/* eslint-disable */ import React from 'react';
+import React from 'react';
 import MovieDetails from '../components/Movie/MovieDetails';
 import TopHeader from '../components/TopHeader/TopHeader';
 

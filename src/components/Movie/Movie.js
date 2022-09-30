@@ -1,4 +1,4 @@
-/* eslint-disable */ import React from "react";
+/* eslint-disable */;
 import { Link } from "react-router-dom";
 
 const Movie = (props) => {

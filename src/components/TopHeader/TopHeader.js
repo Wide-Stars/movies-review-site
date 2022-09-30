@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable */;
 import { RiMovie2Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import Navigation from "./Navigation";
