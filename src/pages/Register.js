@@ -1,24 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link, } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
 	auth,
 	registerWithEmailAndPassword,
-	signInWithGoogle,
 } from "../auth";
 import "./Register.css";
+
 function Register() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [name, setName] = useState("");
 	const [user, loading, error] = useAuthState(auth);
-
-	const register = () => {
+	const navigate = useNavigate();
+	console.log(user, loading, error)
+	const register = async () => {
 		if (!name) alert("Please enter name");
-		console.log(registerWithEmailAndPassword(name, email, password))
+		const result = await registerWithEmailAndPassword(name, email, password)
+		console.log(result, user);
 	};
 	useEffect(() => {
 		if (loading) return;
+		if (user) navigate(-1);
 
 	}, [user, loading]);
 	return (

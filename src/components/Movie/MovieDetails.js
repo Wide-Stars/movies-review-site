@@ -3,7 +3,8 @@ import AddReview from "../Review/AddReview";
 import Review from "../Review/Review";
 import Title from "../UI/Title";
 import DetailsBanner from "./DetailsBanner";
-
+import { auth } from "../../auth";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useLocation } from 'react-router-dom'
 import { db } from "../../firebase"
 import { doc, getDoc } from "firebase/firestore";
@@ -13,6 +14,8 @@ import { useEffect, useState } from "react";
 
 
 const MovieDetails = () => {
+  const [user, loading, error] = useAuthState(auth);
+
   const [movie, setMovie] = useState({})
   const [reviews, setReviews] = useState('')
 
@@ -23,7 +26,7 @@ const MovieDetails = () => {
 
       setMovie(snap.data())
 
-      setReviews(JSON.parse(snap.data().review));
+      if (snap.data().review) setReviews(JSON.parse(snap?.data().review));
 
     }
     else {
@@ -73,13 +76,16 @@ const MovieDetails = () => {
         description={movie.description || "...."}
       />
       <Title>Reviews</Title>
+
+
       <div className="row">
         <div className="col-md-7">
           {userReviews}
         </div>
         <div className="col-md-5">
-          <h2>Sumbit Your Review</h2>
-          <AddReview id={currentId} reviews={reviews} reRenderHandler={reRenderHandler} />
+          {!user && <p className="text-center lead  ">Please login to add a new review</p>}
+          {user && <>  <h2>Sumbit Your Review</h2>
+            <AddReview id={currentId} reviews={reviews} reRenderHandler={reRenderHandler} /></>}
         </div>
       </div>
     </div>

@@ -8,12 +8,15 @@ function Login() {
 	const [password, setPassword] = useState("");
 	const [user, loading, error] = useAuthState(auth);
 	const navigate = useNavigate();
+	const loginHandler = async () => {
+		const res = await logInWithEmailAndPassword(email, password)
+	}
 	useEffect(() => {
 		if (loading) {
 			// maybe trigger a loading screen
 			return;
 		}
-		if (user) navigate("/dashboard");
+		if (user) navigate(-1)
 	}, [user, loading]);
 	return (
 		<div className="login">
@@ -34,7 +37,7 @@ function Login() {
 				/>
 				<button
 					className="login__btn"
-					onClick={() => logInWithEmailAndPassword(email, password)}
+					onClick={loginHandler}
 				>
 					Login
 				</button>
