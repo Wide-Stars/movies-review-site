@@ -80,7 +80,7 @@ const MovieDetails = () => {
 
       <div className="row">
         <div className="col-md-7">
-          {userReviews}
+          {reviews.length > 0 ? userReviews : <h3 className="text-center">No Reviews</h3>}
         </div>
         <div className="col-md-5">
           {!user && <p className="text-center lead  ">Please login to add a new review</p>}
