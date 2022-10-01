@@ -22,6 +22,7 @@ const Dashboard = () => {
   const [moviesList, setMoviesList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  console.log("test")
 
   useEffect(() => {
     setIsLoading(true);

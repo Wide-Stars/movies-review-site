@@ -15,6 +15,9 @@ const AdminLayout = (props) => {
             <Link to="/dashboard/movie_lists">
               <li>Movie List</li>
             </Link>
+            <Link to="/dashboard/users_lists">
+              <li>Users List</li>
+            </Link>
           </div>
           <div className="col-md-9 left-sidebar">{props.children}</div>
         </div>
