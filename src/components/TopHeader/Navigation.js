@@ -14,9 +14,7 @@ const Navigation = () => {
         <li>
           <Link to="/">Home</Link>
         </li>
-        <li>
-          <Link to="/dashboard">Dashboard</Link>
-        </li>
+
         {!user && <><li>
           <Link to="/login">Login</Link>
         </li>
@@ -24,9 +22,13 @@ const Navigation = () => {
             <Link to="/register">Register</Link>
           </li>
         </>}
-        {user && <li >
-          <button onClick={logout}>Logout</button>
-        </li>}
+        {user && <>
+          <li>
+            <Link to="/dashboard">Dashboard</Link>
+          </li>
+          <li >
+            <button onClick={logout}>Logout</button>
+          </li></>}
       </ul>
     </nav>
   );

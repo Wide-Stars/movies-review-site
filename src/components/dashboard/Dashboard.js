@@ -14,15 +14,23 @@ import { db } from "../../firebase";
 import TopHeader from "../TopHeader/TopHeader";
 import { async } from "@firebase/util";
 import Card from "../UI/Card";
-
+import { auth } from "../../auth";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
 const Dashboard = () => {
+  const [user, loading, error] = useAuthState(auth);
   const [moviesList, setMoviesList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsLoading(true);
     unsubscribe();
-  }, []);
+    if (!user) {
+      navigate("/login");
+
+    }
+  }, [user]);
 
   //data fetching from firebase
   const q = query(collection(db, "movies"));
