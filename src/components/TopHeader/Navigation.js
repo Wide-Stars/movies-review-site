@@ -8,7 +8,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 
 const Navigation = () => {
   const [user, loading, error] = useAuthState(auth);
-  console.log(user.email)
+
   return (
     <nav className={classes.nav}>
       <ul>
