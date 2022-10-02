@@ -24,25 +24,37 @@ const Dashboard = () => {
   const navigate = useNavigate();
   console.log("test")
 
-  useEffect(() => {
-    setIsLoading(true);
-    unsubscribe();
-    if (!user) {
-      navigate("/login");
-
-    }
-  }, [user]);
-
-  //data fetching from firebase
   const q = query(collection(db, "movies"));
-  const unsubscribe = onSnapshot(q, (querySnapshot) => {
-    setMoviesList(
-      querySnapshot.docs.map((doc) => {
+
+  const getMovies = async () => {
+    onSnapshot(q, (querySnapshot) => {
+
+
+      const data = querySnapshot.docs.map((doc) => {
         return { id: doc.id, ...doc.data() };
       })
-    );
+
+      setMoviesList(data);
+    });
+  }
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    getMovies();
+    console.log(moviesList)
+
     setIsLoading(false);
-  });
+
+
+
+    // if (!user) {
+    //   navigate("/login");
+
+    // }
+  }, []);
+
+
 
   return (
     <AdminLayout>
