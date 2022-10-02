@@ -48,10 +48,10 @@ const Dashboard = () => {
 
 
 
-    // if (!user) {
-    //   navigate("/login");
+    if (user.email !== "movieflix.pro.bd@gmail.com") {
+      navigate("/login");
 
-    // }
+    }
   }, []);
 
 

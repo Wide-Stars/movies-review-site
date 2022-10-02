@@ -7,6 +7,7 @@ import Details from "./pages/Details";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import UsersList from "./components/dashboard/UsersList";
 
 
 
@@ -22,6 +23,8 @@ const App = () => {
         <Route path="/dashboard" element={<Admin />} />
         <Route path="/dashboard/add_movie" element={<AddMove />} />
         <Route path="dashboard/movie_lists" element={<MovieList />} />
+        <Route path="/dashboard/users_lists" element={<UsersList />} />
+        Route
       </Routes>
     </Router>
   );

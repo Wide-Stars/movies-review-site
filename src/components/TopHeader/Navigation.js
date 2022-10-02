@@ -8,6 +8,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 
 const Navigation = () => {
   const [user, loading, error] = useAuthState(auth);
+
   return (
     <nav className={classes.nav}>
       <ul>
@@ -22,13 +23,15 @@ const Navigation = () => {
             <Link to="/register">Register</Link>
           </li>
         </>}
-        {user && <>
+        {user?.email === "movieflix.pro.bd@gmail.com" && <>
           <li>
             <Link to="/dashboard">Dashboard</Link>
           </li>
-          <li >
-            <button onClick={logout}>Logout</button>
-          </li></>}
+        </>}
+
+        {user && <li >
+          <button onClick={logout}>Logout</button>
+        </li>}
       </ul>
     </nav>
   );
