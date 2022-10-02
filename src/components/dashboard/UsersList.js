@@ -19,7 +19,6 @@ import AdminLayout from "../layouts/AdminLayout";
 const Dashboard = () => {
 	const [userList, setUserList] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
-	console.log("test");
 
 	// const getUsers = async () => {
 	// 	const q = query(collection(db, "users"));
@@ -52,7 +51,6 @@ const Dashboard = () => {
 	}, []);
 
 	//data fetching from firebase
-	console.log(userList[0]);
 
 
 

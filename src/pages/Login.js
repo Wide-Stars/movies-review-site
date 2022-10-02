@@ -11,8 +11,9 @@ function Login() {
 	const [user, loading, error] = useAuthState(auth);
 	const navigate = useNavigate();
 	const loginHandler = async () => {
-		const res = await logInWithEmailAndPassword(email, password)
+		await logInWithEmailAndPassword(email, password)
 	}
+	console.log(window.history)
 	useEffect(() => {
 		if (loading) {
 			// maybe trigger a loading screen

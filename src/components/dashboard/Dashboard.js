@@ -22,7 +22,6 @@ const Dashboard = () => {
   const [moviesList, setMoviesList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  console.log("test")
 
   const q = query(collection(db, "movies"));
 
@@ -42,13 +41,12 @@ const Dashboard = () => {
     setIsLoading(true);
 
     getMovies();
-    console.log(moviesList)
 
     setIsLoading(false);
 
 
 
-    if (user.email !== "movieflix.pro.bd@gmail.com") {
+    if (user?.email !== "movieflix.pro.bd@gmail.com") {
       navigate("/login");
 
     }
