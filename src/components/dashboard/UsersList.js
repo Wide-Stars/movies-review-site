@@ -19,44 +19,49 @@ import AdminLayout from "../layouts/AdminLayout";
 const Dashboard = () => {
 	const [userList, setUserList] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
+	console.log("test");
 
-	useEffect(() => {
-		setIsLoading(true);
-		unsubscribe();
-	}, []);
+	const getUsers = async () => {
+		const q = query(collection(db, "users"));
+		const data = onSnapshot(q, (querySnapshot) => {
 
-	//data fetching from firebase
-	const q = query(collection(db, "users"));
-	const unsubscribe = onSnapshot(q, (querySnapshot) => {
-		setUserList(
 			querySnapshot.docs.map((doc) => {
 				return { ...doc.data() };
 			})
-		);
-		setIsLoading(false);
-		console.log(userList);
-	});
-
-	const handleDelete = async (id) => {
-		const docRef = doc(db, "movies", id);
-		try {
-			await deleteDoc(docRef);
-			userList.splice(
-				userList.findIndex((movie) => movie.id === id),
-				1
-			);
-		} catch (err) {
-			console.log(err);
 		}
-	};
+		);
+
+		setUserList(data);
+
+
+
+		setIsLoading(false);
+	}
+
+	useEffect(() => {
+		setIsLoading(true);
+		const q = query(collection(db, "users"));
+		onSnapshot(q, (querySnapshot) => {
+			setUserList(
+				querySnapshot.docs.map((doc) => {
+					return { ...doc.data() };
+				})
+			);
+			setIsLoading(false);
+			console.log(userList[0]);
+		});
+	}, []);
+
+	//data fetching from firebase
+
+
+
 
 	const usersListA = userList.map((movie, i) => {
 		return (
 			<tr>
 				<td>
-
 					{i + 1}
-
 				</td>
 				<td>
 					{movie.name}
