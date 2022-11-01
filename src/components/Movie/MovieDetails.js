@@ -7,7 +7,7 @@ import { auth } from "../../auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useLocation } from 'react-router-dom'
 import { db } from "../../firebase"
-import { doc, getDoc, updateDoc, increment } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
 
@@ -21,13 +21,6 @@ const MovieDetails = () => {
 
   const getMovieData = async (id) => {
 
-    const snap1 = doc(db, 'movies', id)
-
-    await updateDoc(snap1, {
-      view: increment(1)
-
-    });
-
     const snap = await getDoc(doc(db, 'movies', id))
     if (snap.exists()) {
 
@@ -39,7 +32,6 @@ const MovieDetails = () => {
     else {
       console.log("No such document")
     }
-    console.log(movie)
   }
 
   const currentId = useLocation().pathname.split("/")[2];
@@ -53,7 +45,7 @@ const MovieDetails = () => {
     reRenderHandler()
 
 
-  }, [])
+  }, [reRenderHandler])
 
 
 
@@ -82,7 +74,6 @@ const MovieDetails = () => {
         writers={movie.writer || "N/A"}
         stars={movie.stars || "N/A"}
         description={movie.description || "...."}
-        view={movie.view || "N/A"}
       />
       <Title>Reviews</Title>
 
