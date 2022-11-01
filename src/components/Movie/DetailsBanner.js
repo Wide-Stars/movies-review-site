@@ -3,6 +3,7 @@ import Card from "../UI/Card";
 import ReactPlayer from "react-player";
 
 const DetailsBanner = (props) => {
+  console.log(props)
   return (
     <div>
       <div className="row">
@@ -22,6 +23,9 @@ const DetailsBanner = (props) => {
           </h5>
           <h5>
             Stars: <span className="dtls_name">{props.stars}</span>
+          </h5>
+          <h5>
+            Total views: <span className="dtls_name">{props.view}</span>
           </h5>
         </Card>
       </div>
