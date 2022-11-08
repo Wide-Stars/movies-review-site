@@ -3,45 +3,23 @@ import React from 'react'
 const sideBar = () => {
 	return (<div>
 		<div className="card mt-5" style={{ width: "18rem" }}>
-			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Cat_poster_1.jpg/260px-Cat_poster_1.jpg" className="card-img-top" alt="..." />
-			<div className="card-body">
-				<h5 className="card-title">Card title</h5>
-				<p className="card-text text-dark">
-					Some quick example text to build on the card title and make up the bulk of
-					the card's content.
-				</p>
-				<a href="#" className="btn btn-primary">
-					Go somewhere
-				</a>
+
+			<div className="card-body  ">
+				<label class="form-label text-dark pl-5">Search for movie:</label>
+				<input className='form-control' />
+				<div className='text-center'>
+					<h5 className="card-title">Card title</h5>
+
+					<a href="#" className="btn btn-primary ">
+
+						Search
+					</a>
+
+				</div>
+
 			</div>
 		</div>
 
-		<div className="card mt-5" style={{ width: "18rem" }}>
-			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Cat_poster_1.jpg/260px-Cat_poster_1.jpg" className="card-img-top" alt="..." />
-			<div className="card-body">
-				<h5 className="card-title">Card title</h5>
-				<p className="card-text text-dark">
-					Some quick example text to build on the card title and make up the bulk of
-					the card's content.
-				</p>
-				<a href="#" className="btn btn-primary">
-					Go somewhere
-				</a>
-			</div>
-		</div>
-		<div className="card mt-5" style={{ width: "18rem" }}>
-			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Cat_poster_1.jpg/260px-Cat_poster_1.jpg" className="card-img-top" alt="..." />
-			<div className="card-body">
-				<h5 className="card-title">Card title</h5>
-				<p className="card-text text-dark ">
-					Some quick example text to build on the card title and make up the bulk of
-					the card's content.
-				</p>
-				<a href="#" className="btn btn-primary">
-					Go somewhere
-				</a>
-			</div>
-		</div>
 
 	</div>
 	)
