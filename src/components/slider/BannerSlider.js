@@ -47,7 +47,7 @@ const BannerSlider = () => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 3,
           slidesToScroll: 1,
           infinite: true,
           dots: true,
@@ -80,7 +80,7 @@ const BannerSlider = () => {
               url={`/movie/${movie.id}`}
               key={movie.id}
               src={movie.coverImgUrl}
-              width="490px"
+              width="360px"
             />
           ))}
         </Slider>
