@@ -57,18 +57,14 @@ const MovieDetails = () => {
 
 
 
-
-
-
-
   const userReviews = reviews.length > 0 ? reviews.map((review) => {
 
     return (
       <Review
-        rating={review.rating || "N/A"}
-        name={review.name || "N/A"}
+        rating={review.rating || "Loading.. ."}
+        name={review.name || "Loading.. ."}
         date={review.date || "00/00/0000"}
-        description={review.comment || "N/A"}
+        description={review.comment || "Loading.. ."}
       />
     );
   }) : null;
@@ -77,12 +73,12 @@ const MovieDetails = () => {
     <div>
       <DetailsBanner
         src={movie.tailerUrl}
-        movieName={movie.name || "N/A"}
-        director={movie.director || "N/A"}
-        writers={movie.writer || "N/A"}
-        stars={movie.stars || "N/A"}
+        movieName={movie.name || "Loading.. ."}
+        director={movie.director || "Loading.. ."}
+        writers={movie.writer || "Loading.. ."}
+        stars={movie.stars || "Loading.. ."}
         description={movie.description || "...."}
-        view={movie.view || "N/A"}
+        view={movie.view || "Loading.. ."}
       />
       <Title>Reviews</Title>
 

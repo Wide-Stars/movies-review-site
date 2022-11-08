@@ -67,3 +67,7 @@ h5 {
 .movie_desc {
   font-size: 30px;
 }
+
+.post-time {
+  color: rgba(26, 25, 25, 0.769);
+}

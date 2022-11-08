@@ -9,7 +9,7 @@ const DetailsBanner = (props) => {
       <div className="row">
         <div className="col-md-8">
           <ReactPlayer height="420px" width="100%" url={props.src} />
-          <p className="mt-4 movie_desc">{props.description}</p>
+          <p className="mt-4 movie_desc">{props.movieName}</p>
         </div>
         <Card className="col-md-4">
           <h5>
