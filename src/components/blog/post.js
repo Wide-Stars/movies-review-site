@@ -61,7 +61,7 @@ const Post = () => {
               <p className="card-text text-dark">{movie.description}</p>
 
               <Link to={"/movie/" + movie.id}>
-                <button type="button" class="btn btn-outline-primary">
+                <button type="button" className="btn btn-outline-primary">
                   Read more
                 </button>
               </Link>

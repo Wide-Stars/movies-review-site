@@ -11,9 +11,9 @@ const Home = () => {
       <BannerSlider />
       {/* <LatestMovie /> */}
       <div className="container ">
-        <div class="row">
-          <div class="col-8 "><Post /></div>
-          <div class="col-3 ">
+        <div className="row">
+          <div className="col-8 "><Post /></div>
+          <div className="col-3 ">
             <SideBar />
           </div>
         </div>
