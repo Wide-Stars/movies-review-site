@@ -8,7 +8,7 @@ const TopHeader = () => {
   return (
     <div className="mb-5">
       <header className={classes["top-header"]}>
-        <Link className={classes["nav-brand"]} to="/"><RiMovie2Fill color="ff0000" />Movie Revies</Link>
+        <Link className={classes["nav-brand"]} to="/"><RiMovie2Fill color="ff0000" />Film Craving</Link>
         <Navigation />
       </header>
       <hr />
