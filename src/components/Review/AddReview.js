@@ -36,7 +36,7 @@ const AddReview = (props) => {
   }
 
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={submitHandler} >
       <div className={classes.control}>
         <label htmlFor="rating">rating</label>
         <input type="number" defaultValue={1} min={1} max={10} id="rating" ref={ratingRef} />
@@ -49,7 +49,7 @@ const AddReview = (props) => {
         <label htmlFor="description">description</label>
         <textarea rows="5" id="description" ref={descriptionRef}></textarea>
       </div>
-      <button>Add Review</button>
+      <button className="btn btn-primary">Add Review</button>
     </form>
   );
 };

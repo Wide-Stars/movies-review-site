@@ -14,6 +14,7 @@ const AddMoiveDetails = () => {
   const directorRef = useRef("");
   const writersRef = useRef("");
   const starsRef = useRef("");
+  const releaseDateRef = useRef("");
   const [banner, setBanner] = React.useState(false);
 
 
@@ -31,6 +32,7 @@ const AddMoiveDetails = () => {
         director: directorRef.current.value,
         writer: writersRef.current.value,
         stars: starsRef.current.value,
+        releaseDate: releaseDateRef.current.value,
         reviews: [],
       });
 
@@ -42,6 +44,7 @@ const AddMoiveDetails = () => {
       directorRef.current.value = "";
       writersRef.current.value = "";
       starsRef.current.value = "";
+      releaseDateRef.current.value = "";
       setBanner(true)
 
 
@@ -57,6 +60,10 @@ const AddMoiveDetails = () => {
       <div className={classes.control}>
         <label htmlFor="name">Name</label>
         <input type="text" id="name" ref={nameRef} />
+      </div>
+      <div className={classes.control}>
+        <label htmlFor="name">Release date</label>
+        <input type="date" id="name" ref={releaseDateRef} />
       </div>
 
       <div className={classes.control}>

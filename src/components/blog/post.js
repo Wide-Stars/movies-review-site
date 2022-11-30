@@ -24,7 +24,7 @@ const Post = () => {
       );
     });
   }, []);
-
+  console.log(moviesList)
   return (
     <div className="mt-5">
       {moviesList.map((movie) => {
@@ -40,7 +40,7 @@ const Post = () => {
               <div className="d-flex justify-content-between">
                 <div className="d-flex post-time ps-4">
                   <FaClock className="me-2" size={20} />
-                  <p>3/12/2021</p>
+                  <p>{movie.releaseDate ? movie.releaseDate : "Date not available"}</p>
                 </div>
 
                 <div className="d-flex post-time pe-4">
