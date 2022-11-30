@@ -1,4 +1,5 @@
 /* eslint-disable */;
+import React, { useRef, useState } from "react";
 import { RiMovie2Fill } from "react-icons/ri";
 import { Link, useNavigate } from "react-router-dom";
 import Navigation from "./Navigation";
@@ -12,25 +13,41 @@ const TopHeader = () => {
   const navigate = useNavigate();
 
 
+  const [hasError, setErrors] = useState(false);
+
+  const searchRef = useRef("")
+
+
 
   const getSearchedMovie = async (movieName) => {
     const q = query(collection(db, "movies"), where("name", "==", movieName));
 
     const querySnapshot = await getDocs(q);
-    console.log(querySnapshot.docs[0].id);
-    if (querySnapshot.docs[0]?.id) {
+
+    console.log(querySnapshot?.docs[0]?.id);
+
+    if (querySnapshot?.docs[0]?.id) {
+
+      setErrors(false);
 
       // navigate to movie details page
-      navigate(`/movie/${querySnapshot.docs[0].id}`);
+      navigate(`/movie/${querySnapshot?.docs[0].id}`);
 
 
     } else {
+
+      setErrors(true);
+
 
     }
   }
 
   const onSearchClicked = () => {
-    getSearchedMovie("Dhaka Attack")
+    getSearchedMovie(searchRef.current.value)
+
+
+
+
 
 
 
@@ -41,7 +58,8 @@ const TopHeader = () => {
       <header className={classes["top-header"]}>
         <Link className={classes["nav-brand"]} to="/"><RiMovie2Fill color="ff0000" />Film Craving</Link>
 
-        <input type="search" className="form-control rounded m-5" placeholder="Search" aria-label="Search" />
+        <input ref={searchRef} type="search" className={`form-control rounded ${!hasError ? "m-3" : ""}`} placeholder="Search" aria-label="Search" />
+        {hasError && <p className="text-center m-3 ">The movie doesn't exist</p>}
         <button onClick={onSearchClicked} type="button" className="btn btn-outline-primary ">Search</button>
 
 
