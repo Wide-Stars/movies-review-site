@@ -2,20 +2,20 @@ import BannerSlider from "../components/slider/BannerSlider";
 import LatestMovie from "../components/slider/LatestMovie";
 import TopHeader from "../components/TopHeader/TopHeader";
 import Post from '../components/blog/post'
-import SideBar from "../components/blog/sideBar";
+
 
 const Home = () => {
   return (
-    <div className="container-home pb-5 ">
+    <div className="container pb-5 ">
       <TopHeader />
       <BannerSlider />
       {/* <LatestMovie /> */}
       <div className="container ">
-        <div className="row">
-          <div className="col-8 "><Post /></div>
-          <div className="col-3 ">
-            <SideBar />
-          </div>
+        <div className="row d-flex justify-content-center ">
+
+
+          <div className="col-9 "><Post /></div>
+
         </div>
       </div>
     </div>
