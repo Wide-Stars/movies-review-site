@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { db } from "../../firebase"
 import classes from "./addRevie.module.css";
 import { doc, updateDoc } from "firebase/firestore";
@@ -9,6 +9,7 @@ const AddReview = (props) => {
   const nameRef = useRef("");
   const descriptionRef = useRef("");
   const ratingRef = useRef(1);
+  const [reviewError, seReviewError] = useState(false)
 
   const docRef = doc(db, "movies", props.id);
 
@@ -23,6 +24,11 @@ const AddReview = (props) => {
 
   function submitHandler(event) {
     event.preventDefault();
+
+    if (nameRef.current.value === "" || descriptionRef.current.value === "") {
+      seReviewError(true)
+      return
+    }
 
     addReview(docRef)
     // navigate("/movie/" + props.id);
@@ -50,7 +56,9 @@ const AddReview = (props) => {
         <textarea rows="5" id="description" ref={descriptionRef}></textarea>
       </div>
       <button className="btn btn-primary">Add Review</button>
+      {reviewError && <p className="text-danger">Please fill all the fields</p>}
     </form>
+
   );
 };
 
