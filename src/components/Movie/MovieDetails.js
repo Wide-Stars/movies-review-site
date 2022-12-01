@@ -20,6 +20,7 @@ const MovieDetails = () => {
   const [movie, setMovie] = useState({})
   const [reviews, setReviews] = useState('')
 
+
   const getMovieData = async (id) => {
 
     const snap1 = doc(db, 'movies', id)
@@ -34,12 +35,18 @@ const MovieDetails = () => {
 
       setMovie(snap.data())
 
-      if (snap.data().review) setReviews(JSON.parse(snap?.data().review));
+      if (snap.data().review) {
+        setReviews(JSON.parse(snap?.data().review));
+
+      } else {
+        setReviews('empty')
+      }
 
     }
     else {
       console.log("No such document")
     }
+
   }
 
   const currentId = useLocation().pathname.split("/")[2];
@@ -85,7 +92,14 @@ const MovieDetails = () => {
 
       <div className="row">
         <div className="col-md-7">
-          {reviews.length > 0 ? userReviews : <h3 className="text-center">No Reviews</h3>}
+
+          {reviews === 'empty' ? <h3 className="text-center">No Reviews</h3> : userReviews}
+
+          {reviews === '' ? <h3 className="text-center">Loading reviews</h3> : ""}
+
+
+
+
         </div>
         <div className="col-md-5">
           {!user && <p className="text-center lead  ">Please login to add a new review</p>}
