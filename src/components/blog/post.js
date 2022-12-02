@@ -25,7 +25,6 @@ const Post = () => {
       );
     });
   }, []);
-  console.log(moviesList)
   return (
     <div className="mt-5">
       {moviesList.map((movie) => {
