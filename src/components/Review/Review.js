@@ -8,7 +8,7 @@ const Review = (props) => {
     let stars = [];
     for (let i = 0; i < numberOfStars; i++) {
 
-      stars.push(<BsFillStarFill />
+      stars.push(<BsFillStarFill className="text-warning" />
       )
 
     }

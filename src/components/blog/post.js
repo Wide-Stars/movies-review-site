@@ -62,7 +62,7 @@ const Post = () => {
 
               <Link to={"/movie/" + movie.id}>
                 <button type="button" className="btn btn-outline-primary">
-                  Read more
+                  View more
                 </button>
               </Link>
             </div>

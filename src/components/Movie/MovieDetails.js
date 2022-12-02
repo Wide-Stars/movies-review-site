@@ -39,7 +39,7 @@ const MovieDetails = () => {
         setReviews(JSON.parse(snap?.data().review));
 
       } else {
-        setReviews('empty')
+        setReviews([])
       }
 
     }
