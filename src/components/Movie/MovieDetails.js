@@ -76,6 +76,8 @@ const MovieDetails = () => {
     );
   }) : null;
 
+  console.log()
+
   return (
     <div>
       <DetailsBanner
@@ -95,7 +97,7 @@ const MovieDetails = () => {
 
           {reviews === 'empty' ? <h3 className="text-center">No Reviews</h3> : userReviews}
 
-          {reviews === '' ? <h3 className="text-center">Loading reviews</h3> : ""}
+          {typeof (reviews) == "string" && reviews === '' ? <h3 className="text-center">Loading reviews</h3> : ""}
 
 
 
