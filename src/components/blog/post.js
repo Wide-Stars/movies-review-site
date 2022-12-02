@@ -1,5 +1,6 @@
 import { React, useEffect, useState } from "react";
-import { FaClock, FaEye } from "react-icons/fa";
+import { FaClock, FaEye, } from "react-icons/fa";
+import { BsFillStarFill } from "react-icons/bs";
 import {
   collection,
   query,
@@ -37,10 +38,20 @@ const Post = () => {
             <div className="row"></div>
 
             <div className="row ">
-              <div className="d-flex justify-content-between">
+              <div className="d-flex justify-content-between align-items-center">
                 <div className="d-flex post-time ps-4">
                   <FaClock className="me-2" size={20} />
                   <p>{movie.releaseDate ? movie.releaseDate : "Date not available"}</p>
+                </div>
+
+                <div className="d-flex post-time ps-4">
+                  <BsFillStarFill size={20} className="text-warning me-2" />
+
+
+
+                  <p>{Math.floor(Math.random() * 10) + 4} /10</p>
+
+
                 </div>
 
                 <div className="d-flex post-time pe-4">
