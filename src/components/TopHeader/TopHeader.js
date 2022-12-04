@@ -1,71 +1,82 @@
-/* eslint-disable */;
-import React, { useRef, useState } from "react";
-import { RiMovie2Fill } from "react-icons/ri";
-import { Link, useNavigate } from "react-router-dom";
+import { React, useEffect, useState } from "react";
+import {
+  collection,
+  query,
+  orderBy,
+  onSnapshot,
+  collectionGroup,
+} from "firebase/firestore";
+import { db } from "../../firebase";
+import { Link } from "react-router-dom";
 import Navigation from "./Navigation";
 import classes from "./topHeader.module.css";
-import { db } from "../../firebase"
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { RiMovie2Fill } from "react-icons/ri";
+
+
+
 
 
 const TopHeader = () => {
 
-  const navigate = useNavigate();
+  const [search, setSearch] = useState("");
 
 
-  const [hasError, setErrors] = useState(false);
+  const [moviesList, setMoviesList] = useState([]);
 
-  const searchRef = useRef("")
+  const q = query(collection(db, "movies"));
 
-
-
-  const getSearchedMovie = async (movieName) => {
-    const q = query(collection(db, "movies"), where("name", "==", movieName));
-
-    const querySnapshot = await getDocs(q);
-
-    console.log(querySnapshot?.docs[0]?.id);
-
-    if (querySnapshot?.docs[0]?.id) {
-
-      setErrors(false);
-
-      // navigate to movie details page
-      navigate(`/movie/${querySnapshot?.docs[0].id}`);
-
-
-    } else {
-
-      setErrors(true);
-
-
-    }
-  }
-
-  const onSearchClicked = () => {
-    getSearchedMovie(searchRef.current.value)
-
-
-
-
-
-
-
-  }
+  useEffect(() => {
+    onSnapshot(q, (querySnapshot) => {
+      setMoviesList(
+        querySnapshot.docs.map((doc) => {
+          return { id: doc.id, ...doc.data() };
+        })
+      );
+    });
+  }, []);
 
   return (
     <div className="mb-5">
       <header className={classes["top-header"]}>
         <Link className={classes["nav-brand"]} to="/"><RiMovie2Fill color="ff0000" />Film Craving</Link>
 
-        <input ref={searchRef} type="search" className={`form-control rounded ${!hasError ? "m-3" : ""}`} placeholder="Search" aria-label="Search" />
-        {hasError && <p className="text-center m-3 ">The movie doesn't exist</p>}
-        <button onClick={onSearchClicked} type="button" className="btn btn-outline-primary ">Search</button>
+        <input onChange={(e) => { setSearch(e.target.value) }} type="search" className={`form-control rounded `} placeholder="Search" aria-label="Search" />
+
+        <button type="button" className="btn btn-outl ine-primary ">Search</button>
 
 
         <Navigation />
 
       </header>
+      <div className=" d-flex justify-content-center">
+        <div style={
+          {
+            width: "60%",
+            marginLeft: "-14rem"
+          }
+        } className="d-flex justify-content-center flex-column mt-3  ">
+          <ul className="list-group list-group-flush bg-dark ">
+
+            {
+              moviesList.filter((movie) => {
+                if (search == "") {
+
+                } else if (movie.name.toLowerCase().includes(search.toLowerCase())) {
+                  return movie
+                }
+              }).map((movie) => {
+                return (
+                  <li className="list-group-item text-white bg-dark">
+                    <Link className="text-decoration-none 
+							text-light" to={`/movie/${movie.id}`}>{movie.name}</Link>
+                  </li>
+                )
+
+              })}
+
+          </ul>
+        </div>
+      </div>
       <hr />
     </div>
   );
