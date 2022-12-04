@@ -35,6 +35,14 @@ const TopHeader = () => {
     });
   }, []);
 
+  const temp = moviesList.filter((movie) => {
+    if (search == "") {
+
+    } else if (movie.name.toLowerCase().includes(search.toLowerCase())) {
+      return movie
+    }
+  })
+
   return (
     <div className="mb-5">
       <header className={classes["top-header"]}>
@@ -42,7 +50,7 @@ const TopHeader = () => {
 
         <input onChange={(e) => { setSearch(e.target.value) }} type="search" className={`form-control rounded `} placeholder="Search" aria-label="Search" />
 
-        <button type="button" className="btn btn-outl ine-primary ">Search</button>
+
 
 
         <Navigation />
@@ -58,13 +66,7 @@ const TopHeader = () => {
           <ul className="list-group list-group-flush bg-dark ">
 
             {
-              moviesList.filter((movie) => {
-                if (search == "") {
-
-                } else if (movie.name.toLowerCase().includes(search.toLowerCase())) {
-                  return movie
-                }
-              }).map((movie) => {
+              temp.map((movie) => {
                 return (
                   <li className="list-group-item text-white bg-dark">
                     <Link className="text-decoration-none 
@@ -73,6 +75,7 @@ const TopHeader = () => {
                 )
 
               })}
+            {search != "" && temp.length == 0 ? <li className="list-group-item text-white bg-dark">No Movies Found</li> : null}
 
           </ul>
         </div>
